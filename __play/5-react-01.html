@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>냥냥</title>
+  <style>
+    body {
+      text-align: center;
+    }
+    .main-card {
+      display: inline-block;
+      position: relative;
+      min-width: 400px;
+      min-height: 400px;
+      margin-top: 10px;
+      vertical-align: top;
+      background-color: lavender;
+    }
+    .main-card button {
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+    }
+    .favorites {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px
+    }
+    .favorites img {
+      width: 150px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <h1>1 냥냥</h1>
+  <!-- <form>
+    <input type="text" name="name" placeholder="입력하라 냥냥">
+    <button type="submit">생성냥</button>
+  </form>
+  <div class="main-card">
+    <img src="https://cataas.com/cat/60b73094e04e18001194a309/says/react" alt="냥" width="400">
+    <button>🤍</button>
+  </div>
+  <ul class="favorites">
+  <li>
+    <img src="https://cataas.com/cat/60b73094e04e18001194a309/says/react" alt="냥냥">
+  </li>
+  <li>
+    <img src="https://cataas.com/cat/60b73094e04e18001194a309/says/react" alt="냥냥">
+  </li>
+  <li>
+    <img src="https://cataas.com/cat/60b73094e04e18001194a309/says/react" alt="냥냥">
+  </li>
+  </ul> -->
+
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel">
+    console.log('냥?')
+
+    const catItem = (
+      <li>
+        <img src="https://cataas.com//cat/5e9970351b7a400011744233/says/inflearn" alt="냥냥냥" />
+      </li>
+    );
+
+    const drawHere = document.querySelector('#app');
+    ReactDOM.render(catItem, drawHere);
+
+    // // 1. 좋아요 버튼 찾기
+    // const likeButton = document.querySelector('.main-card button')
+
+    // // 2. 좋아요 버튼 클릭 이벤트
+    // likeButton.addEventListener('click', function() {
+    //   // 3. 하트 색 변경
+    //   likeButton.innerHTML = '❤️'
+
+    //   // 4. 고양이 사진 추가할 위치 찾기
+    //   const favorites = document.querySelector('.favorites')
+
+    //   // 5. 새로운 고양이 사진 생성
+    //   const newFavoriteImage = document.createElement('img')
+    //   newFavoriteImage.src = 'https://cataas.com/cat/60b73094e04e18001194a309/says/react'
+
+    //   // 6. 고양이 사진 감싸는 (li)태그 생성
+    //   const li = document.createElement('li')
+
+    //   // 7. li 태그에 고양이 사진 추가
+    //   li.appendChild(newFavoriteImage)
+
+    //   // 8. 생성한 요소 넣기
+    //   favorites.appendChild(li)
+    // })
+  </script>
+</body>
+</html>

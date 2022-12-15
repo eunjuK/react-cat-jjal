@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>냥냥</title>
+    <title>31 조건부 렌더링</title>
     <style>
       body {
         text-align: center;
@@ -140,21 +140,15 @@
         const CAT2 = "https://cataas.com//cat/5e9970351b7a400011744233/says/inflearn";
         const CAT3 = "https://cataas.com/cat/595f280b557291a9750ebf65/says/JavaScript";
 
-        // 처음 한번만 localstorage 에 접근 (-> 함수를 사용하여 가능)
-        const [counter, setCounter] = React.useState(() => {
-          return jsonLocalStorage.getItem('counter');
-        })
+        const [counter, setCounter] = React.useState(jsonLocalStorage.getItem('counter'));
         const [mainCat, setMainCat] = React.useState(CAT1);
-        const [favorites, setFavorites] = React.useState(() => {
-          return jsonLocalStorage.getItem('favorites') || [];
-        })
+        const [favorites, setFavorites] = React.useState(jsonLocalStorage.getItem('favorites') || [])
 
-        const alreadyFavorite = favorites.includes(mainCat);
-
-        const counterTitle = counter === null ? "" : counter + ', '
+        const alreadyFavorite = favorites.includes(mainCat)
 
         async function setInitialCat() {
           const newCat = await fetchCat('First Cat');
+          console.log('new cat')
           setMainCat(newCat);
         }
 
@@ -162,17 +156,18 @@
           setInitialCat()
         }, [])
 
+        React.useEffect(() => {
+          console.log('Hello')
+        }, [counter])
+
         
         async function updateMainCat(value) {
           const newCat = await fetchCat(value);
 
           setMainCat(newCat);
-          // prev (previous 의 약자) : 기존 값
-          setCounter((prev) => {
-            const nextCounter = prev + 1;
-            jsonLocalStorage.setItem('counter', nextCounter);
-            return nextCounter;
-          })
+          const nextCounter = counter + 1;
+          setCounter(nextCounter);
+          jsonLocalStorage.setItem('counter', nextCounter);
         }
 
         function onHeartClick() {
@@ -183,7 +178,7 @@
 
         return (
           <div>
-            <Title>{counterTitle}냥냥뇽뇽</Title>
+            <Title>{counter}, 냥냥뇽뇽</Title>
             <Form updateMainCat={updateMainCat} />
             <MainCard img={mainCat} onHeartClick={onHeartClick} alreadyFavorite={alreadyFavorite} />
             <Favorites favorites={favorites} />
